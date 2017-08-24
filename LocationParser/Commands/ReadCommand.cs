@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.CommandLineUtils;
+﻿using LocationParser.Models;
+using Microsoft.Extensions.CommandLineUtils;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -30,7 +31,7 @@ namespace LocationParser.Commands
 					throw new Exception($"File '{file}' not found.");
 				}
 
-				var parameters = JsonConvert.DeserializeObject(File.ReadAllText(file), typeof(string));
+				var parameters = JsonConvert.DeserializeObject(File.ReadAllText(file), typeof(Locations));
 
 				return 0;
 			});
