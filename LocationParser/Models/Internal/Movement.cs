@@ -6,16 +6,6 @@ namespace LocationParser.Models.Internal
 	{
 		public DateTime timestamp;
 		public int confidence;
-		public enum movementType
-		{
-			IN_VEHICLE,
-			ON_BICYCLE,
-			ON_FOOT,
-			RUNNING,
-			STILL,
-			TILTING,
-			UNKNOWN,
-			WALKING
-		}
+		public MovementType movementType;
 	}
 }
