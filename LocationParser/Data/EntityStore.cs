@@ -1,4 +1,4 @@
-﻿using LocationParser.Models;
+﻿using LocationParser.Models.Internal;
 
 namespace LocationParser.Data
 {

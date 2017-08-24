@@ -1,4 +1,5 @@
-﻿using LocationParser.Models.Google;
+﻿using LocationParser.Extensions.Models;
+using LocationParser.Models.Google;
 using Microsoft.Extensions.CommandLineUtils;
 using Newtonsoft.Json;
 using System;
@@ -31,7 +32,7 @@ namespace LocationParser.Commands
 					throw new Exception($"File '{file}' not found.");
 				}
 
-				var parameters = JsonConvert.DeserializeObject<Locations>(File.ReadAllText(file));
+				var parameters = JsonConvert.DeserializeObject<Locations>(File.ReadAllText(file)).ToTimeLine();
 
 				return 0;
 			});
