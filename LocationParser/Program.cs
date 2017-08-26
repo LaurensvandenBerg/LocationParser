@@ -15,8 +15,8 @@ namespace LocationParser
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
+				Console.ReadLine();
 			}
-			Console.ReadLine();
 		}
     }
 }

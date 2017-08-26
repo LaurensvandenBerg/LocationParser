@@ -1,4 +1,5 @@
-﻿using LocationParser.Extensions.Models;
+﻿using LocationParser.Current;
+using LocationParser.Extensions.Models;
 using LocationParser.Models.Google;
 using Microsoft.Extensions.CommandLineUtils;
 using Newtonsoft.Json;
@@ -15,7 +16,7 @@ namespace LocationParser.Commands
 		{
 			var readCommand = CreateCommand("read", "Read a new Location history file");
 
-			var fileArgument = readCommand.Argument("file", "The JSON file with the locations.");
+			var fileArgument = readCommand.Argument("path", "The path of the JSON file with the locations.");
 
 			readCommand.OnExecute(() =>
 			{
@@ -29,11 +30,9 @@ namespace LocationParser.Commands
 
 				if (!File.Exists(file))
 				{
-					throw new Exception($"File '{file}' not found.");
+					throw new Exception($"File at location: '{file}' not found.");
 				}
-
-				var parameters = JsonConvert.DeserializeObject<Locations>(File.ReadAllText(file)).ToTimeLine();
-
+				CurrentFile.Write(JsonConvert.DeserializeObject<Locations>(File.ReadAllText(file)).ToTimeLine());
 				return 0;
 			});
 		}
