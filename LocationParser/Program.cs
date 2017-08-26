@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace LocationParser
 {
@@ -15,6 +16,7 @@ namespace LocationParser
 			{
 				Console.WriteLine(ex);
 			}
+			Console.ReadLine();
 		}
     }
 }
