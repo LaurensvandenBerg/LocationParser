@@ -19,7 +19,7 @@ namespace LocationParser.Extensions.Models
 			longitudeE7 = (entry.coordinate.longitude * 10000000).ToString(),
 			altitude = entry.altitude.ToString(),
 			accuracy = entry.accuracy.ToString(),
-			activity = new[] { entry.movements.ToActivity() }
+			activity = new[] { entry.movements?.ToActivity() }
 		};
 		public static Activity ToActivity(this IEnumerable<Movement> movements) => new Activity()
 		{
