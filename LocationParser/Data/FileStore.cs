@@ -1,6 +1,7 @@
 ﻿using LocationParser.Current;
 using LocationParser.Extensions.Models;
-using System;
+using LocationParser.Models.Google;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace LocationParser.Data
@@ -11,12 +12,17 @@ namespace LocationParser.Data
 
 		public void Copy(string nameFrom, string nameTo)
 		{
-			throw new NotImplementedException();
+			Load(nameFrom);
+			Store(nameTo);
 		}
 
 		public void Load(string name)
 		{
-			throw new NotImplementedException();
+			if (!File.Exists(name + ".json"))
+			{
+				throw new FileNotFoundException("Timeline with the name: " + name + " was not found");
+			}
+			CurrentFile.Write(JsonConvert.DeserializeObject<Locations>(File.ReadAllText(name + ".json")).ToTimeLine());
 		}
 
 		public void Store(string name)
