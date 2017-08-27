@@ -9,12 +9,17 @@ namespace LocationParser.Data
 			throw new System.NotImplementedException();
 		}
 
-		public TimeLine Retrieve(string name)
+		public void Load(string name)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void Store(string name, TimeLine timeLine)
+		public void Store(string name)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public void Store(string name, string path)
 		{
 			throw new System.NotImplementedException();
 		}

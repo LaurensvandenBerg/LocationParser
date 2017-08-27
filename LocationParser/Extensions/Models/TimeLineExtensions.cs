@@ -15,11 +15,11 @@ namespace LocationParser.Extensions.Models
 		public static Location ToLocation(this TimeEntry entry) => new Location
 		{
 			timestampMS = entry.timestamp.ToEpoch().ToString(),
-			latitudeE7 = entry.coordinate.latitude.ToString(),
-			longitudeE7 = entry.coordinate.longitude.ToString(),
+			latitudeE7 = (entry.coordinate.latitude * 10000000).ToString(),
+			longitudeE7 = (entry.coordinate.longitude * 10000000).ToString(),
 			altitude = entry.altitude.ToString(),
 			accuracy = entry.accuracy.ToString(),
-			activity = new[] { entry.movements.ToActivity() }
+			activity = new[] { entry.movements?.ToActivity() }
 		};
 		public static Activity ToActivity(this IEnumerable<Movement> movements) => new Activity()
 		{

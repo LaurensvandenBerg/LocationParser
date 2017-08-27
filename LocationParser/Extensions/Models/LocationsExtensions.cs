@@ -18,8 +18,8 @@ namespace LocationParser.Extensions.Models
 			timestamp = new DateTime().FromEpoch(Convert.ToInt64(location.timestampMS)),
 			coordinate = new Coordinate()
 			{
-				latitude = Convert.ToDouble(location.latitudeE7),
-				longitude = Convert.ToDouble(location.longitudeE7)
+				latitude = Convert.ToDouble(location.latitudeE7) / 10000000,
+				longitude = Convert.ToDouble(location.longitudeE7) / 10000000
 			},
 			altitude = Convert.ToInt32(location.altitude),
 			accuracy = Convert.ToInt32(location.accuracy),
