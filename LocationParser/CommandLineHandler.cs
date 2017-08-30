@@ -27,6 +27,7 @@ namespace LocationParser
             var factory = new CommandFactory(app);
             factory.Register<ReadCommand>();
 			factory.Register<SaveCommand>();
+			factory.Register<FilterCommand>();
         }
         public int Execute(string[] args)
         {

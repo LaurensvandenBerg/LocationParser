@@ -4,27 +4,27 @@ namespace LocationParser.Commands
 {
 	public abstract class Command
 	{
-		protected CommandLineApplication app;
+		protected CommandLineApplication parent;
 
-		protected Command(CommandLineApplication app)
+		protected Command(CommandLineApplication parent)
 		{
-			this.app = app;
+			this.parent = parent;
 		}
 
 		public abstract void SetupCommand();
 
 		protected CommandLineApplication CreateCommand(string command, string description)
 		{
-			return CreateCommand(app, command, description);
+			return CreateCommand(parent, command, description);
 		}
 
-		protected CommandLineApplication CreateCommand(CommandLineApplication app, string command, string description)
+		protected CommandLineApplication CreateCommand(CommandLineApplication parent, string command, string description)
 		{
-			return app.Command(command, c => {
+			return parent.Command(command, c => {
 				c.Description = description;
-				c.FullName = app.Description;
-				if (app.OptionHelp != null && app.OptionHelp.Template != null)
-					c.HelpOption(app.OptionHelp?.Template);
+				c.FullName = parent.Description;
+				if (parent.OptionHelp != null && parent.OptionHelp.Template != null)
+					c.HelpOption(parent.OptionHelp?.Template);
 			});
 		}
 	}
