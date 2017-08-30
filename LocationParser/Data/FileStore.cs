@@ -3,6 +3,8 @@ using LocationParser.Extensions.Models;
 using LocationParser.Models.Google;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LocationParser.Data
 {
@@ -33,6 +35,11 @@ namespace LocationParser.Data
 		public void Store(string name, string path)
 		{
 			File.WriteAllText(path + name, CurrentFile.Read().ToLocations().ToString());
+		}
+
+		public IEnumerable<string> List()
+		{
+			return Directory.EnumerateFiles(filePath).Select(f => f.Split('\\').Last().Split('.').First());
 		}
 	}
 }

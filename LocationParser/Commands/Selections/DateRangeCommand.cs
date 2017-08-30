@@ -8,9 +8,7 @@ namespace LocationParser.Commands.Selections
 {
 	class DateRangeCommand : Command
 	{
-		public DateRangeCommand(CommandLineApplication parent) : base(parent)
-		{
-		}
+		public DateRangeCommand(CommandLineApplication parent) : base(parent){}
 
 		public override void SetupCommand()
 		{

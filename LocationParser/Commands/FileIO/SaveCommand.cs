@@ -2,7 +2,7 @@
 using Microsoft.Extensions.CommandLineUtils;
 using System;
 
-namespace LocationParser.Commands
+namespace LocationParser.Commands.FileIO
 {
 	class SaveCommand : Command
 	{

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 
-namespace LocationParser.Commands
+namespace LocationParser.Commands.FileIO
 {
 	class ReadCommand : Command
 	{
