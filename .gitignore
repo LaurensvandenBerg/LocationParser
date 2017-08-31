@@ -1,12 +1,6 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/.vs/LocationParser/v15
+﻿/.vs/LocationParser/v15
 /LocationParser/bin
 /LocationParser/obj
 /LocationParser/LocationParser.csproj.user
-/LocationParser/Properties/launchSettings.json
-/LocationParser/Location_History.json
 /.vs/config/applicationhost.config
-/LocationParser/Storage/Files/testname.json
+*.json

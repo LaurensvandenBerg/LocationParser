@@ -1,4 +1,5 @@
 ﻿using LocationParser.Commands;
+using LocationParser.Commands.FileIO;
 using Microsoft.Extensions.CommandLineUtils;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.Linq;
@@ -27,6 +28,9 @@ namespace LocationParser
             var factory = new CommandFactory(app);
             factory.Register<ReadCommand>();
 			factory.Register<SaveCommand>();
+			factory.Register<OpenCommand>();
+			factory.Register<FilterCommand>();
+
         }
         public int Execute(string[] args)
         {
