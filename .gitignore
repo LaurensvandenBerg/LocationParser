@@ -2,8 +2,5 @@
 /LocationParser/bin
 /LocationParser/obj
 /LocationParser/LocationParser.csproj.user
-/LocationParser/Properties/launchSettings.json
-/LocationParser/Location_History.json
 /.vs/config/applicationhost.config
-/LocationParser/Storage/Files/testname.json
-/LocationParser/Current/currentTimeLine.json
+*.json
