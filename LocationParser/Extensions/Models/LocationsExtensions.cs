@@ -23,7 +23,7 @@ namespace LocationParser.Extensions.Models
 			},
 			altitude = Convert.ToInt32(location.altitude),
 			accuracy = Convert.ToInt32(location.accuracy),
-			movements = location.activity?.First().ToMovements()
+			movements = location.activity?.First()?.ToMovements()
 		};
 
 		public static IEnumerable<Movement> ToMovements(this Activity activity) =>

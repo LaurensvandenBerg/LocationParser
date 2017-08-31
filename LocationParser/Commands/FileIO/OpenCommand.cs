@@ -17,15 +17,13 @@ namespace LocationParser.Commands.FileIO
 
 			var store = new FileStore();
 
-			openCommand.Description = string.Join("\n", store.List());
-
 			openCommand.OnExecute(() =>
 			{
 				var name = nameArgument.Value;
 
 				if (string.IsNullOrWhiteSpace(name))
 				{
-					//return openCommand.Description;
+					Console.Write(string.Join("\n", store.List()));
 					return 0;
 				}
 				new FileStore().Load(name);
