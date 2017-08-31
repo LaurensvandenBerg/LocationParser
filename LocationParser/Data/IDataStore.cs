@@ -1,4 +1,4 @@
-﻿using LocationParser.Models.Internal;
+﻿using System.Collections.Generic;
 
 namespace LocationParser.Data
 {
@@ -11,5 +11,7 @@ namespace LocationParser.Data
 		void Load(string name);
 
 		void Copy(string nameFrom, string nameTo);
-    }
+
+		IEnumerable<string> List();
+	}
 }

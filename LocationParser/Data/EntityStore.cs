@@ -1,4 +1,5 @@
-﻿using LocationParser.Models.Internal;
+﻿using System.Collections.Generic;
+using LocationParser.Models.Internal;
 
 namespace LocationParser.Data
 {
@@ -20,6 +21,11 @@ namespace LocationParser.Data
 		}
 
 		public void Store(string name, string path)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public IEnumerable<string> List()
 		{
 			throw new System.NotImplementedException();
 		}
