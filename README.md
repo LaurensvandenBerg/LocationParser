@@ -1,7 +1,7 @@
 # LocationParser
 Reading Location history files provided by google.
 
-#Installation
+# Installation
 
 *Will be improved in the future*
 1. Clone the code from github.
