@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using LocationParser.Models.Internal;
+using System.IO;
 
 namespace LocationParser.Data
 {
@@ -20,7 +20,7 @@ namespace LocationParser.Data
 			throw new System.NotImplementedException();
 		}
 
-		public void Store(string name, string path)
+		public void Store(string name, DirectoryInfo path)
 		{
 			throw new System.NotImplementedException();
 		}

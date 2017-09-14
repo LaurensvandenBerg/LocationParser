@@ -9,7 +9,7 @@ namespace LocationParser.Extensions.Models
     {
 		public static Locations ToLocations(this TimeLine timeLine) => new Locations
 		{
-			locations = timeLine.timeEntries.Select(e => e.ToLocation())
+			locations = timeLine?.timeEntries?.Select(e => e.ToLocation())
 		};
 
 		public static Location ToLocation(this TimeEntry entry) => new Location

@@ -1,7 +1,6 @@
 ﻿using LocationParser.Data;
 using Microsoft.Extensions.CommandLineUtils;
 using System;
-using System.Linq;
 
 namespace LocationParser.Commands.FileIO
 {
@@ -15,14 +14,13 @@ namespace LocationParser.Commands.FileIO
 
 			var nameArgument = openCommand.Argument("name", "The name of the file to be opened");
 
-			var store = new FileStore();
-
 			openCommand.OnExecute(() =>
 			{
 				var name = nameArgument.Value;
 
 				if (string.IsNullOrWhiteSpace(name))
 				{
+					var store = new FileStore();
 					Console.Write(string.Join("\n", store.List()));
 					return 0;
 				}
@@ -30,6 +28,5 @@ namespace LocationParser.Commands.FileIO
 				return 0;
 			});
 		}
-
 	}
 }
