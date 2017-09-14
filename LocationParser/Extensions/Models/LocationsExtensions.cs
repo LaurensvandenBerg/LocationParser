@@ -10,7 +10,7 @@ namespace LocationParser.Extensions.Models
 	{
 		public static TimeLine ToTimeLine(this Locations locations) => new TimeLine()
 		{
-			timeEntries = locations.locations?.Select(l => l.ToTimeEntry())
+			timeEntries = locations?.locations?.Select(l => l.ToTimeEntry())
 		};
 
 		public static TimeEntry ToTimeEntry(this Location location) => new TimeEntry()

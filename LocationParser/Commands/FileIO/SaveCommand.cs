@@ -1,6 +1,6 @@
 ﻿using LocationParser.Data;
 using Microsoft.Extensions.CommandLineUtils;
-using System;
+using System.IO;
 
 namespace LocationParser.Commands.FileIO
 {
@@ -18,8 +18,8 @@ namespace LocationParser.Commands.FileIO
 
 			saveCommand.OnExecute(() =>
 			{
-				string name = nameArgument.Value;
-				string path = pathArgument.Value;
+				var name = nameArgument.Value;
+				var path = pathArgument.Value;
 
 				if (string.IsNullOrWhiteSpace(name))
 				{
@@ -33,7 +33,8 @@ namespace LocationParser.Commands.FileIO
 					store.Store(name);
 				}
 				else {
-					store.Store(name, path);
+					var newPath = Directory.Exists(path) ? new DirectoryInfo(path) : Directory.CreateDirectory(path);
+					store.Store(name, newPath);
 				}
 				return 0;
 			});

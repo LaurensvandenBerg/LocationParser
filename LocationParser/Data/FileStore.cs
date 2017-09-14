@@ -10,7 +10,7 @@ namespace LocationParser.Data
 {
 	class FileStore : IDataStore
 	{
-		private readonly string filePath = @"Storage\Files\";
+		private readonly DirectoryInfo filePath = !Directory.Exists(@"Storage\Files\") ? Directory.CreateDirectory(@"Storage\Files\") : new DirectoryInfo(@"Storage\Files\");
 
 		public void Copy(string nameFrom, string nameTo)
 		{
@@ -22,7 +22,7 @@ namespace LocationParser.Data
 		{
 			if (!File.Exists(filePath + name + ".json"))
 			{
-				throw new FileNotFoundException("Timeline with the name: " + name + " was not found");
+				throw new FileNotFoundException("Timeline with the name: " + name + ".json was not found");
 			}
 			CurrentFile.Write(JsonConvert.DeserializeObject<Locations>(File.ReadAllText(filePath + name + ".json")).ToTimeLine());
 		}
@@ -32,14 +32,14 @@ namespace LocationParser.Data
 			Store(name, filePath);
 		}
 
-		public void Store(string name, string path)
+		public void Store(string name, DirectoryInfo path)
 		{
-			File.WriteAllText(path + name + ".json", CurrentFile.Read().ToLocations().ToString());
+				File.WriteAllText(path + name + ".json", CurrentFile.Read().ToLocations().ToString());
 		}
 
 		public IEnumerable<string> List()
 		{
-			return Directory.EnumerateFiles(filePath).Select(f => f.Split('\\').Last().Split('.').First());
+			return filePath.EnumerateFiles().Select(fi => Path.GetFileNameWithoutExtension(fi.Name));
 		}
 	}
 }
