@@ -29,6 +29,7 @@ namespace LocationParser
             factory.Register<ReadCommand>();
 			factory.Register<SaveCommand>();
 			factory.Register<OpenCommand>();
+			factory.Register<DeleteCommand>();
 			factory.Register<FilterCommand>();
 
         }

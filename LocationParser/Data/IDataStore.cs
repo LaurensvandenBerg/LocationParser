@@ -11,6 +11,8 @@ namespace LocationParser.Data
 
 		void Load(string name);
 
+		void Delete(string name);
+
 		void Copy(string nameFrom, string nameTo);
 
 		IEnumerable<string> List();

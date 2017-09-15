@@ -10,9 +10,9 @@ namespace LocationParser.Commands.FileIO
 
 		public override void SetupCommand()
 		{
-			var openCommand = CreateCommand("open", "Open a previously saved file");
+			var openCommand = CreateCommand("open", "Open a previously saved Timeline");
 
-			var nameArgument = openCommand.Argument("name", "The name of the file to be opened");
+			var nameArgument = openCommand.Argument("name", "The name of the Timeline to be opened");
 
 			openCommand.OnExecute(() =>
 			{

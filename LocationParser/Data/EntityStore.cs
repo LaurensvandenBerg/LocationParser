@@ -15,6 +15,10 @@ namespace LocationParser.Data
 			throw new System.NotImplementedException();
 		}
 
+		public void Delete(string name)
+		{
+			throw new System.NotImplementedException();
+		}
 		public void Store(string name)
 		{
 			throw new System.NotImplementedException();

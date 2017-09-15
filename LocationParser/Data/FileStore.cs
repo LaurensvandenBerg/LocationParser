@@ -27,6 +27,15 @@ namespace LocationParser.Data
 			CurrentFile.Write(JsonConvert.DeserializeObject<Locations>(File.ReadAllText(filePath + name + ".json")).ToTimeLine());
 		}
 
+		public void Delete(string name)
+		{
+			if (!File.Exists(filePath + name + ".json"))
+			{
+				throw new FileNotFoundException("Timeline with the name: " + name + ".json was not found");
+			}
+			File.Delete(filePath + name + ".json");
+		}
+
 		public void Store(string name)
 		{
 			Store(name, filePath);
