@@ -14,7 +14,7 @@ namespace LocationParser.Commands.Selections
 		{
 			var dateRangeCommand = CreateCommand("daterange", "Select all entries between 2 given dates, given in format: DD-MM-YYYY");
 			var startDate = dateRangeCommand.Argument("startDate", "The day on which the selection starts.");
-			var endDate = dateRangeCommand.Argument("endDate", "the day on which the selection ends.");
+			var endDate = dateRangeCommand.Argument("endDate", "The day on which the selection ends.");
 
 			dateRangeCommand.OnExecute(() =>
 			{
