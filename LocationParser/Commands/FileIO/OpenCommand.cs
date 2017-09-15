@@ -1,7 +1,6 @@
 ﻿using LocationParser.Data;
 using Microsoft.Extensions.CommandLineUtils;
 using System;
-using System.Linq;
 
 namespace LocationParser.Commands.FileIO
 {
@@ -11,11 +10,9 @@ namespace LocationParser.Commands.FileIO
 
 		public override void SetupCommand()
 		{
-			var openCommand = CreateCommand("open", "Open a previously saved file");
+			var openCommand = CreateCommand("open", "Open a previously saved Timeline");
 
-			var nameArgument = openCommand.Argument("name", "The name of the file to be opened");
-
-			var store = new FileStore();
+			var nameArgument = openCommand.Argument("name", "The name of the Timeline to be opened");
 
 			openCommand.OnExecute(() =>
 			{
@@ -23,6 +20,7 @@ namespace LocationParser.Commands.FileIO
 
 				if (string.IsNullOrWhiteSpace(name))
 				{
+					var store = new FileStore();
 					Console.Write(string.Join("\n", store.List()));
 					return 0;
 				}
@@ -30,6 +28,5 @@ namespace LocationParser.Commands.FileIO
 				return 0;
 			});
 		}
-
 	}
 }
