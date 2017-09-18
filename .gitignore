@@ -4,3 +4,7 @@
 /LocationParser/LocationParser.csproj.user
 /.vs/config/applicationhost.config
 *.json
+/LocationParserTests/bin/Debug
+/LocationParserTests/obj/Debug
+/packages/Microsoft.Extensions.CommandLineUtils.1.1.1/lib
+/packages
