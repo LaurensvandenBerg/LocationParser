@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace LocationParser.Commands.Selections
 {
-	class TimeSpanCommand : Command
+	class TimeSpanCommand : BaseSelectionCommand
 	{
 		public TimeSpanCommand(CommandLineApplication parent) : base(parent) { }
 
@@ -36,7 +36,9 @@ namespace LocationParser.Commands.Selections
 				var timeLine = CurrentFile.Read();
 				CurrentFile.Write(new TimeLine()
 				{
-					timeEntries = timeLine.timeEntries?.Where(e => e.timestamp.TimeOfDay >= start.TimeOfDay & e.timestamp.TimeOfDay <= end.TimeOfDay)
+					timeEntries = type == SelectionType.INCLUDE
+					? timeLine.timeEntries?.Where(e => e.timestamp.TimeOfDay >= start.TimeOfDay && e.timestamp.TimeOfDay <= end.TimeOfDay)
+					: timeLine.timeEntries?.Where(e => !(e.timestamp.TimeOfDay >= start.TimeOfDay) && !(e.timestamp.TimeOfDay <= end.TimeOfDay))
 				});
 				return 0;
 			});

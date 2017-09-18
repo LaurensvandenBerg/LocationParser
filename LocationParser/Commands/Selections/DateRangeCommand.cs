@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace LocationParser.Commands.Selections
 {
-	class DateRangeCommand : Command
+	class DateRangeCommand : BaseSelectionCommand
 	{
 		public DateRangeCommand(CommandLineApplication parent) : base(parent) { }
 
@@ -36,7 +36,10 @@ namespace LocationParser.Commands.Selections
 				var timeLine = CurrentFile.Read();
 				CurrentFile.Write(new TimeLine()
 				{
-					timeEntries = timeLine.timeEntries?.Where(e => e.timestamp.Date >= start.Date & e.timestamp.Date <= end.Date)
+					timeEntries = type == SelectionType.INCLUDE
+						? timeLine.timeEntries?.Where(e => e.timestamp.Date >= start.Date && e.timestamp.Date <= end.Date)
+						: timeLine.timeEntries?.Where(e => !(e.timestamp.Date >= start.Date) && !(e.timestamp.Date <= end.Date))
+
 				});
 				return 0;
 			});
