@@ -20,7 +20,7 @@ namespace LocationParserTests.UnitTests
 
 			//Assert
 			Assert.AreEqual(1,parentCommand.Commands.Count);
-			Assert.IsInstanceOfType(typeof(StubCommand),parentCommand.Commands.FirstOrDefault().GetType());
+			Assert.AreEqual("stubCommand",parentCommand.Commands.FirstOrDefault().Name);
 		}
 		private class StubCommand : Command
 		{

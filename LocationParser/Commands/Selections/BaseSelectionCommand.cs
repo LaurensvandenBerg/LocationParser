@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Extensions.CommandLineUtils;
+﻿using Microsoft.Extensions.CommandLineUtils;
 
 namespace LocationParser.Commands.Selections
 {
@@ -15,7 +14,6 @@ namespace LocationParser.Commands.Selections
 			factory.Register<TimeSpanCommand>();
 			//factory.Register<AreaCommand>();
 		}
-
 	}
 	enum SelectionType
 	{
