@@ -12,6 +12,7 @@ namespace LocationParser.Commands.Selections
 			var factory = new CommandFactory(parent);
 			factory.Register<DateRangeCommand>();
 			factory.Register<TimeSpanCommand>();
+			factory.Register<AccuracyCommand>();
 			//factory.Register<AreaCommand>();
 		}
 	}
