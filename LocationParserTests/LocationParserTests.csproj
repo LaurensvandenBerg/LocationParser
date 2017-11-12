@@ -67,12 +67,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LocationParser\LocationParser.csproj">
-      <Project>{daebf0b9-f809-4996-a226-50716dfd2980}</Project>
-      <Name>LocationParser</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\GoogleLocations.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GoogleLocations.Designer.cs</LastGenOutput>
@@ -83,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UnitTests\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocationParser\LocationParser.csproj">
+      <Project>{daebf0b9-f809-4996-a226-50716dfd2980}</Project>
+      <Name>LocationParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

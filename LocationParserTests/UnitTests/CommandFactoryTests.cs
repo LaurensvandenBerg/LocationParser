@@ -22,7 +22,7 @@ namespace LocationParserTests.UnitTests
 			Assert.AreEqual(1,parentCommand.Commands.Count);
 			Assert.AreEqual("stubCommand",parentCommand.Commands.FirstOrDefault().Name);
 		}
-		private class StubCommand : Command
+		private class StubCommand : Verbs
 		{
 			public StubCommand(CommandLineApplication parent) : base(parent)
 			{
