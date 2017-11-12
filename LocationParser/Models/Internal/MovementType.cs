@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LocationParser.Models.Internal
+﻿namespace LocationParser.Models.Internal
 {
-    public enum MovementType
+	public enum MovementType
 	{
 		EXITING_VEHICLE,
-        IN_RAIL_VEHICLE,
-        IN_ROAD_VEHICLE,
+		IN_RAIL_VEHICLE,
+		IN_ROAD_VEHICLE,
 		IN_VEHICLE,
 		ON_BICYCLE,
 		ON_FOOT,
