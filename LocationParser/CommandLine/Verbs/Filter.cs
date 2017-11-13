@@ -7,20 +7,29 @@ using System.Linq;
 namespace LocationParser.CommandLine.Verbs
 {
 	[Verb("filter", HelpText = "Remove all Timeline entries which do not match the given filter")]
-	class Filter
+	class Filter : FilterOptions
 	{
 		public int ParseOptions(FilterOptions options)
 		{
-			AccuracyFilter(options);
-			DateTimeFilter(options);
-			TimespanFilter(options);
+			if (options.AccuracyRange != null)
+			{
+				AccuracyFilter(options);
+			}
+			if (options.DateRange.Any())
+			{
+				DateTimeFilter(options);
+			}
+			if(options.TimespanRange.Any())
+			{
+				TimespanFilter(options);
+			}
 			return 0;
 		}
 
 		private int AccuracyFilter(FilterOptions options)
 		{
-			var min = options.AccuracyRange.Item1;
-			var max = options.AccuracyRange.Item2;
+			var min = options.AccuracyRange.First();
+			var max = options.AccuracyRange.Last();
 
 			var timeLine = CurrentFile.Read();
 			CurrentFile.Write(new TimeLine()
@@ -33,8 +42,8 @@ namespace LocationParser.CommandLine.Verbs
 
 		private int DateTimeFilter(FilterOptions options)
 		{
-			var start = options.DateRange.Item1;
-			var end = options.DateRange.Item2;
+			var start = options.DateRange.First();
+			var end = options.DateRange.Last();
 
 			var timeLine = CurrentFile.Read();
 			CurrentFile.Write(new TimeLine()
@@ -47,8 +56,8 @@ namespace LocationParser.CommandLine.Verbs
 
 		private int TimespanFilter(FilterOptions options)
 		{
-			var start = options.TimespanRange.Item1;
-			var end = options.TimespanRange.Item2;
+			var start = options.TimespanRange.First();
+			var end = options.TimespanRange.Last();
 
 			var timeLine = CurrentFile.Read();
 			CurrentFile.Write(new TimeLine()
