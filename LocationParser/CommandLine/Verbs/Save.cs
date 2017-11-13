@@ -6,12 +6,12 @@ using System.IO;
 namespace LocationParser.CommandLine.Verbs
 {
 	[Verb("save", HelpText = "Save the current working TimeLine to with a specified name")]
-	class Save
+	class Save : SaveOptions
 	{
 		public int ParseOptions(SaveOptions options)
 		{
-			var name = options.name;
-			var path = options.path;
+			var name = options.Name;
+			var path = options.Path;
 
 			if (string.IsNullOrWhiteSpace(name))
 			{

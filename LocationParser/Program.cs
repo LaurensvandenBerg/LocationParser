@@ -1,5 +1,4 @@
-﻿using System;
-using CommandLine;
+﻿using CommandLine;
 using LocationParser.CommandLine.Verbs;
 using LocationParser.CommandLine.Options;
 

@@ -5,11 +5,11 @@ using LocationParser.Data;
 namespace LocationParser.CommandLine.Verbs
 {
 	[Verb("delete", HelpText="Delete a previously saved Timeline")]
-	class Delete
+	class Delete : DeleteOptions
 	{
 		public int ParseOptions(DeleteOptions options)
 		{
-			var name = options.name;
+			var name = options.Name;
 
 			if (string.IsNullOrWhiteSpace(name))
 			{

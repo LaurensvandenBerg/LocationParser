@@ -6,11 +6,11 @@ using System;
 namespace LocationParser.CommandLine.Verbs
 {
 	[Verb("open", HelpText = "Open a previously saved Timeline")]
-	class Open
+	class Open : OpenOptions
 	{
 		public int ParseOptions(OpenOptions options)
 		{
-			var name = options.name;
+			var name = options.Name;
 
 			if (string.IsNullOrWhiteSpace(name))
 			{

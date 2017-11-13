@@ -10,11 +10,11 @@ using System.IO;
 namespace LocationParser.CommandLine.Verbs
 {
 	[Verb("read", HelpText = "Read a new Location history file")]
-	class Read
+	class Read : ReadOptions
 	{
 		public int ParseOptions(ReadOptions options)
 		{
-			string file = options.path;
+			string file = options.Path;
 
 			if (string.IsNullOrWhiteSpace(file))
 			{
