@@ -1,20 +1,14 @@
-﻿using Microsoft.Extensions.CommandLineUtils;
+﻿using ConsoleAppBase;
 
 namespace LocationParser.Commands.Selections
 {
-	class BaseSelectionCommand : Command
+	class BaseSelectionCommand : FilterCommand
 	{
-		protected SelectionType type;
-		public BaseSelectionCommand(CommandLineApplication parent) : base(parent) { }
-
-		public override void SetupCommand()
-		{
-			var factory = new CommandFactory(parent);
-			factory.Register<DateRangeCommand>();
-			factory.Register<TimeSpanCommand>();
-			factory.Register<AccuracyCommand>();
-			//factory.Register<AreaCommand>();
-		}
+		[CommandOption(Template = "--selectionType",
+						Name = "selection type",
+						Description = "Determine if you want to in- or exclude the given selection. Default is include. accepted values: <INCLUDE|EXCLUDE>",
+						Type = CommandOptionType.SingleValue)]
+		protected SelectionType Type { get; set; }
 	}
 	enum SelectionType
 	{

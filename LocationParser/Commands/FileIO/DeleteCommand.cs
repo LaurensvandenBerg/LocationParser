@@ -1,30 +1,25 @@
 ﻿using LocationParser.Data;
-using Microsoft.Extensions.CommandLineUtils;
+using ConsoleAppBase;
+using System;
 
 namespace LocationParser.Commands.FileIO
 {
-	class DeleteCommand : Command
+	[Command("delete", Description = "Delete a previously save Timeline")]
+	class DeleteCommand : MainCommand
 	{
-		public DeleteCommand(CommandLineApplication parent) : base(parent) { }
+		[CommandArgument(1, Name = "name", Description = "The name of the Timeline to be deleted")]
+		public string TimeLineName { get; set; }
 
-		public override void SetupCommand()
+		public override int OnExecute()
 		{
-			var deleteCommand = CreateCommand("delete", "Delete a previously save Timeline");
-
-			var nameArgument = deleteCommand.Argument("name", "The name of the Timeline to be deleted");
-
-			deleteCommand.OnExecute(() =>
+			var store = new FileStore();
+			if (string.IsNullOrWhiteSpace(TimeLineName))
 			{
-				var name = nameArgument.Value;
-
-				if (string.IsNullOrWhiteSpace(name))
-				{
-					deleteCommand.ShowHelp();
-					return 1;
-				}
-				new FileStore().Delete(name);
-				return 0;
-			});
+				Console.WriteLine(string.Join("\n", store.List()));
+				return 1;
+			}
+			store.Delete(TimeLineName);
+			return 0;
 		}
 	}
 }

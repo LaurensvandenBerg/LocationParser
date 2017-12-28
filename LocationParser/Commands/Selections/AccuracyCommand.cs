@@ -1,49 +1,43 @@
 ﻿using LocationParser.Current;
 using LocationParser.Models.Internal;
-using Microsoft.Extensions.CommandLineUtils;
+using ConsoleAppBase;
 using System.Linq;
+using System;
 
 namespace LocationParser.Commands.Selections
 {
+	[Command("accuracy", Description = "Select all entries between a certain accuracy range")]
 	class AccuracyCommand : BaseSelectionCommand
 	{
-		public AccuracyCommand(CommandLineApplication parent) : base(parent)
-		{
-		}
+		[CommandArgument(1, Name = "minimum", Description = "The minimum value of accuracy", Required = true)]
+		public int Minimum { get; set; }
 
-		public override void SetupCommand()
-		{
-			var accuracyCommand = CreateCommand("accuracy", "Select all entries between a certain accuracy range");
-			var minimumAccuracy = accuracyCommand.Argument("minimum", "The minimum value of accuracy");
-			var maximumAccuracy = accuracyCommand.Argument("maximum", "The maximum value of accuracy");
+		[CommandArgument(2, Name = "maximum", Description = "The maximum value of accuracy", Required = true)]
+		public int Maximum { get; set; }
 
-			accuracyCommand.OnExecute(() =>
+		public override int OnExecute()
+		{
+			var timeLine = CurrentFile.Read();
+			switch (Type)
 			{
-				if (string.IsNullOrWhiteSpace(minimumAccuracy.Value) || string.IsNullOrWhiteSpace(maximumAccuracy.Value))
-				{
-					accuracyCommand.ShowHelp();
-					return 1;
-				}
-
-				var min = 0;
-				var max = 0;
-
-				if (!int.TryParse(minimumAccuracy.Value, out min) || !int.TryParse(maximumAccuracy.Value, out max))
-				{
-					accuracyCommand.ShowHelp();
-					return 1;
-				}
-
-				var timeLine = CurrentFile.Read();
-				CurrentFile.Write(new TimeLine()
-				{
-					timeEntries = type == SelectionType.INCLUDE
-						? timeLine.timeEntries?.Where(e => e.accuracy >= min && e.accuracy <= max)
-						: timeLine.timeEntries?.Where(e => !(e.accuracy >= min) && !(e.accuracy <= max))
-
-				});
-				return 0;
-			});
+				case SelectionType.INCLUDE:
+					CurrentFile.Write(new TimeLine()
+					{
+						timeEntries = timeLine.timeEntries?.Where(e => e.accuracy >= Minimum && e.accuracy <= Maximum)
+					});
+					break;
+				case SelectionType.EXCLUDE:
+					CurrentFile.Write(new TimeLine()
+					{
+						timeEntries = timeLine.timeEntries?.Where(e => !(e.accuracy >= Minimum) && !(e.accuracy <= Maximum))
+					});
+					break;
+				default:
+					//TODO: Show help with type not found
+					Console.WriteLine("TODO");
+					break;
+			}
+			return 0;
 		}
 	}
 }

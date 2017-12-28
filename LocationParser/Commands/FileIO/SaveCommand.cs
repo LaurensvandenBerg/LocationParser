@@ -1,43 +1,31 @@
 ﻿using LocationParser.Data;
-using Microsoft.Extensions.CommandLineUtils;
+using ConsoleAppBase;
 using System.IO;
 
 namespace LocationParser.Commands.FileIO
 {
-	class SaveCommand : Command
+	[Command("save", Description = "Save the current working TimeLine to with a specified name")]
+	class SaveCommand : MainCommand
 	{
-		public SaveCommand(CommandLineApplication parent) : base(parent) { }
+		[CommandArgument(2, Name = "name", Description = "The name of the TimeLine", Required = true)]
+		public string TimeLineName { get; set; }
 
-		public override void SetupCommand()
+		[CommandArgument(2, Name = "path", Description = "optional path of the TimeLine", Required = false)]
+		public string Path { get; set; }
+
+		public override int OnExecute()
 		{
-			var saveCommand = CreateCommand("save", "Save the current working TimeLine to with a specified name");
-
-			var nameArgument = saveCommand.Argument("name", "The name of the TimeLine");
-
-			var pathArgument = saveCommand.Argument("path", "optional path of the TimeLine");
-
-			saveCommand.OnExecute(() =>
+			var store = new FileStore();
+			if (string.IsNullOrWhiteSpace(Path))
 			{
-				var name = nameArgument.Value;
-				var path = pathArgument.Value;
-
-				if (string.IsNullOrWhiteSpace(name))
-				{
-					saveCommand.ShowHelp();
-					return 1;
-				}
-
-				var store = new FileStore();
-				if (string.IsNullOrWhiteSpace(path))
-				{
-					store.Store(name);
-				}
-				else {
-					var newPath = Directory.Exists(path) ? new DirectoryInfo(path) : Directory.CreateDirectory(path);
-					store.Store(name, newPath);
-				}
-				return 0;
-			});
+				store.Store(TimeLineName);
+			}
+			else
+			{
+				var newPath = Directory.Exists(Path) ? new DirectoryInfo(Path) : Directory.CreateDirectory(Path);
+				store.Store(TimeLineName, newPath);
+			}
+			return 0;
 		}
 	}
 }

@@ -1,23 +1,9 @@
-﻿using LocationParser.Commands.Selections;
-using Microsoft.Extensions.CommandLineUtils;
+﻿using ConsoleAppBase;
 
 namespace LocationParser.Commands
 {
-	class FilterCommand : Command
+	[Command("filter", Description = "Remove all Timeline entries which do not match the given filter")]
+	class FilterCommand : MainCommand
 	{
-		public FilterCommand(CommandLineApplication parent) : base(parent) { }
-
-		public override void SetupCommand()
-		{
-			var filterCommand = CreateCommand("filter", "Remove all Timeline entries which do not match the given filter");
-			var factory = new CommandFactory(filterCommand);
-			factory.Register<BaseSelectionCommand>();
-
-			filterCommand.OnExecute(() =>
-			{
-				filterCommand.ShowHelp();
-				return 0;
-			});
-		}
 	}
 }
