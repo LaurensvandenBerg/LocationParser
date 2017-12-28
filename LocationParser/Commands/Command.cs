@@ -1,31 +1,10 @@
-﻿using Microsoft.Extensions.CommandLineUtils;
+﻿using ConsoleAppBase;
 
 namespace LocationParser.Commands
 {
-	public abstract class Command
+	[Command("main")]
+	public class MainCommand : Command
 	{
-		protected CommandLineApplication parent;
-
-		protected Command(CommandLineApplication parent)
-		{
-			this.parent = parent;
-		}
-
-		public abstract void SetupCommand();
-
-		protected CommandLineApplication CreateCommand(string command, string description)
-		{
-			return CreateCommand(parent, command, description);
-		}
-
-		protected CommandLineApplication CreateCommand(CommandLineApplication parent, string command, string description)
-		{
-			return parent.Command(command, c => {
-				c.Description = description;
-				c.FullName = parent.Description;
-				if (parent.OptionHelp != null && parent.OptionHelp.Template != null)
-					c.HelpOption(parent.OptionHelp?.Template);
-			});
-		}
+		public override  string Name { get; set; }
 	}
 }

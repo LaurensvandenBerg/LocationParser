@@ -1,12 +1,11 @@
 ﻿using System;
-using System.IO;
 
 namespace LocationParser
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+	class Program
+	{
+		static void Main(string[] args)
+		{
 			try
 			{
 				var argumentSetup = new CommandLineHandler();
@@ -17,5 +16,5 @@ namespace LocationParser
 				Console.WriteLine(ex);
 			}
 		}
-    }
+	}
 }
