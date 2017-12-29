@@ -7,7 +7,7 @@ using System;
 namespace LocationParser.Commands.Selections
 {
 	[Command("accuracy", Description = "Select all entries between a certain accuracy range")]
-	class AccuracyCommand : BaseSelectionCommand
+	class AccuracyCommand : FilterCommand
 	{
 		[CommandArgument(1, Name = "minimum", Description = "The minimum value of accuracy", Required = true)]
 		public int Minimum { get; set; }

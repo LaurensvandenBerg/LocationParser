@@ -7,7 +7,7 @@ using System.Linq;
 namespace LocationParser.Commands.Selections
 {
 	[Command("daterange", Description = "Select all entries between 2 given dates, given in format: DD-MM-YYYY")]
-	class DateRangeCommand : BaseSelectionCommand
+	class DateRangeCommand : FilterCommand
 	{
 		[CommandArgument(1, Name = "startDate", Description = "The day on which the selection starts.", Required = true)]
 		public DateTime StartDate { get; set; }
