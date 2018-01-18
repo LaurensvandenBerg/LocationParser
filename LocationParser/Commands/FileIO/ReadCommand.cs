@@ -4,6 +4,7 @@ using LocationParser.Models.Google;
 using ConsoleAppBase;
 using Newtonsoft.Json;
 using System.IO;
+using System;
 
 namespace LocationParser.Commands.FileIO
 {
@@ -17,7 +18,7 @@ namespace LocationParser.Commands.FileIO
 		{
 			if (!File.Exists(Path))
 			{
-				throw new FileNotFoundException($"File at location: '{Path}' not found.");
+				Console.WriteLine(HelpText);
 			}
 			CurrentFile.Write(JsonConvert.DeserializeObject<Locations>(File.ReadAllText(Path)).ToTimeLine());
 			return 0;

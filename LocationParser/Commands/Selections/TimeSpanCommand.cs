@@ -33,8 +33,7 @@ namespace LocationParser.Commands.Selections
 					});
 					break;
 				default:
-					//TODO: Show help with type not found
-					Console.WriteLine("TODO");
+					Console.WriteLine(HelpText);
 					break;
 			}
 			return 0;

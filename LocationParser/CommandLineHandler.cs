@@ -1,6 +1,6 @@
 ﻿using LocationParser.Commands;
-using LocationParser.Commands.FileIO;
 using Microsoft.Extensions.PlatformAbstractions;
+using System;
 using System.Linq;
 
 namespace LocationParser
@@ -21,9 +21,10 @@ namespace LocationParser
 		public int Execute(string[] args)
 		{
 			if (!args.Any())
-				//TODO: Show help
+			{
+				Console.WriteLine(app.HelpText);
 				return 1;
-
+			}
 			return app.Execute(args);
 		}
 	}
