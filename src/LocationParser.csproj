@@ -13,13 +13,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ConsoleAppBase" Version="1.0.0-pre-6fc1ea5" />
-        <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
-        <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+      <Compile Remove="Storage\**" />
+      <EmbeddedResource Remove="Storage\**" />
+      <None Remove="Storage\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Storage\Files\" />
+        <PackageReference Include="ConsoleAppBase" Version="1.0.0-pre-6fc1ea5" />
+        <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     </ItemGroup>
 
 </Project>
