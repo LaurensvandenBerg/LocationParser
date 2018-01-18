@@ -1,20 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.0;net462</TargetFrameworks>
-    <StartupObject>LocationParser.Program</StartupObject>
-    <ApplicationIcon />
-  </PropertyGroup>
+    <PropertyGroup>
+        <VersionPrefix>1.0.0</VersionPrefix>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="ConsoleAppBase" Version="1.0.0-pre-6d2c69c" />
-    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-  </ItemGroup>
+    <PropertyGroup>
+        <AssemblyName>LocationParser</AssemblyName>
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>netcoreapp2.0;net462</TargetFrameworks>
+        <StartupObject>LocationParser.Program</StartupObject>
+        <ApplicationIcon />
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Storage\Files\" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="ConsoleAppBase" Version="1.0.0-pre-6fc1ea5" />
+        <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Storage\Files\" />
+    </ItemGroup>
 
 </Project>

@@ -13,7 +13,7 @@ namespace LocationParser
 		{
 			app = new MainCommand
 			{
-				Name = PlatformServices.Default.Application.ApplicationName,
+				ApplicationName = PlatformServices.Default.Application.ApplicationName,
 				Description = "Parser for a phone's location history"
 			};
 		}
