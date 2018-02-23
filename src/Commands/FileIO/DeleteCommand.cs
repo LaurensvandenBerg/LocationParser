@@ -1,10 +1,10 @@
 ﻿using LocationParser.Data;
-using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 using System;
 
 namespace LocationParser.Commands.FileIO
 {
-	[Command("delete", Description = "Delete a previously save Timeline")]
+	[Command(Name = "delete", Description = "Delete a previously save Timeline")]
 	class DeleteCommand : MainCommand
 	{
 		[CommandArgument(1, Name = "name", Description = "The name of the Timeline to be deleted")]

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using LocationParser.Models.External;
 
 namespace LocationParser.Data
 {
@@ -43,7 +44,17 @@ namespace LocationParser.Data
 
 		public void Store(string name, DirectoryInfo path)
 		{
-				File.WriteAllText(path + name + ".json", CurrentFile.Read().ToLocations().ToString());
+			File.WriteAllText(path + name + ".json", CurrentFile.Read().ToLocations().ToString());
+		}
+
+		public void Export(string name, IExternal exportType)
+		{
+			Export(name, filePath, exportType);
+		}
+
+		public void Export(string name, DirectoryInfo path, IExternal exportType)
+		{
+			File.WriteAllText(path + name + ".json", exportType.ConvertFromTimeLine(CurrentFile.Read()).ToString());
 		}
 
 		public IEnumerable<string> List()

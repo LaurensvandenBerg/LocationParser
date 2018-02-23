@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using LocationParser.Models.External;
+using System.Collections.Generic;
 using System.IO;
 
 namespace LocationParser.Data
@@ -8,6 +9,10 @@ namespace LocationParser.Data
 		void Store(string name);
 
 		void Store(string name, DirectoryInfo path);
+
+		void Export(string name, IExternal exportType);
+
+		void Export(string name, DirectoryInfo path, IExternal exportType);
 
 		void Load(string name);
 

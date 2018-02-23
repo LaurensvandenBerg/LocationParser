@@ -43,7 +43,7 @@ namespace LocationParserTests.UnitTests.Extensions
 			var stubTimeEntry = stubTimeEntries.First();
 
 			Assert.Equal(new DateTime(2017, 1, 1).DayOfYear, stubTimeEntry.timestamp.DayOfYear);
-			Assert.Equal(new Coordinate() { latitude = 1.1, longitude = 1.1 }, stubTimeEntry.coordinate);
+			Assert.Equal(new Coordinate() { latitude = 51.9905099, longitude = 4.3898283 }, stubTimeEntry.coordinate);
 			Assert.Equal(20, stubTimeEntry.accuracy);
 		}
 		[Fact]

@@ -1,13 +1,13 @@
 ﻿using LocationParser.Data;
-using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 using System.IO;
 
 namespace LocationParser.Commands.FileIO
 {
-	[Command("save", Description = "Save the current working TimeLine to with a specified name")]
+	[Command(Name = "save", Description = "Save the current working TimeLine to with a specified name")]
 	class SaveCommand : MainCommand
 	{
-		[CommandArgument(2, Name = "name", Description = "The name of the TimeLine", Required = true)]
+		[CommandArgument(1, Name = "name", Description = "The name of the TimeLine", Required = true)]
 		public string TimeLineName { get; set; }
 
 		[CommandArgument(2, Name = "path", Description = "optional path of the TimeLine", Required = false)]

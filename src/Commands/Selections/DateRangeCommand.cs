@@ -1,12 +1,12 @@
 ﻿using LocationParser.Current;
 using LocationParser.Models.Internal;
-using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 using System;
 using System.Linq;
 
 namespace LocationParser.Commands.Selections
 {
-	[Command("daterange", Description = "Select all entries between 2 given dates, given in format: DD-MM-YYYY")]
+	[Command(Name = "daterange", Description = "Select all entries between 2 given dates, given in format: DD-MM-YYYY")]
 	class DateRangeCommand : FilterCommand
 	{
 		[CommandArgument(1, Name = "startDate", Description = "The day on which the selection starts.", Required = true)]
@@ -33,7 +33,7 @@ namespace LocationParser.Commands.Selections
 					});
 					break;
 				default:
-					Console.WriteLine(HelpText);
+					ShowHelp();
 					break;
 			}
 			return 0;

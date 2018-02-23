@@ -1,6 +1,5 @@
 ﻿using LocationParser.Commands;
 using Microsoft.Extensions.PlatformAbstractions;
-using System;
 using System.Linq;
 
 namespace LocationParser
@@ -13,16 +12,16 @@ namespace LocationParser
 		{
 			app = new MainCommand
 			{
-				ApplicationName = PlatformServices.Default.Application.ApplicationName,
 				Description = "Parser for a phone's location history"
 			};
+			app.AppInfo.AppName = PlatformServices.Default.Application.ApplicationName;
 		}
 
 		public int Execute(string[] args)
 		{
 			if (!args.Any())
 			{
-				Console.WriteLine(app.HelpText);
+				app.ShowHelp();
 				return 1;
 			}
 			return app.Execute(args);

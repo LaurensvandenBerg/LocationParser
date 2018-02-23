@@ -1,10 +1,10 @@
 ﻿using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 
 namespace LocationParser.Commands
 {
-	[Command("main")]
+	[Command(Name = "main")]
 	public class MainCommand : Command
 	{
-		public override  string Name { get; set; }
 	}
 }

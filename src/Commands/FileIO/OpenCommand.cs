@@ -1,10 +1,10 @@
 ﻿using LocationParser.Data;
-using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 using System;
 
 namespace LocationParser.Commands.FileIO
 {
-	[Command("open", Description = "Open a previously saved Timeline")]
+	[Command(Name = "open", Description = "Open a previously saved Timeline")]
 	class OpenCommand : MainCommand
 	{
 		[CommandArgument(1, Name = "name", Description = "The name of the Timeline to be opened", Required = false)]

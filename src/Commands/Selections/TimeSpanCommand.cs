@@ -1,12 +1,12 @@
 ﻿using LocationParser.Current;
 using LocationParser.Models.Internal;
-using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 using System;
 using System.Linq;
 
 namespace LocationParser.Commands.Selections
 {
-	[Command("timespan", Description = "Select all entries between a certain timespan, given in format: HH:mm:ss (24 hour clock)")]
+	[Command(Name = "timespan", Description = "Select all entries between a certain timespan, given in format: HH:mm:ss (24 hour clock)")]
 	class TimeSpanCommand : FilterCommand
 	{
 		[CommandArgument(1, Name = "startTime", Description = "The time on which the selection starts.", Required = true)]
@@ -33,7 +33,7 @@ namespace LocationParser.Commands.Selections
 					});
 					break;
 				default:
-					Console.WriteLine(HelpText);
+					ShowHelp();
 					break;
 			}
 			return 0;

@@ -1,12 +1,11 @@
 ﻿using LocationParser.Current;
 using LocationParser.Models.Internal;
-using ConsoleAppBase;
+using ConsoleAppBase.Attributes;
 using System.Linq;
-using System;
 
 namespace LocationParser.Commands.Selections
 {
-	[Command("accuracy", Description = "Select all entries between a certain accuracy range")]
+	[Command(Name = "accuracy", Description = "Select all entries between a certain accuracy range")]
 	class AccuracyCommand : FilterCommand
 	{
 		[CommandArgument(1, Name = "minimum", Description = "The minimum value of accuracy", Required = true)]
@@ -33,7 +32,7 @@ namespace LocationParser.Commands.Selections
 					});
 					break;
 				default:
-					Console.WriteLine(HelpText);
+					ShowHelp();
 					break;
 			}
 			return 0;
