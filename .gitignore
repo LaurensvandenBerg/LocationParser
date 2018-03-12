@@ -1,10 +1,10 @@
 ﻿/.vs/LocationParser/v15
-/LocationParser/bin
-/LocationParser/obj
-/LocationParser/LocationParser.csproj.user
+/src/bin
+/src/obj
+/src/LocationParser.csproj.user
 /.vs/config/applicationhost.config
 *.json
-/LocationParserTests/bin/Debug
-/LocationParserTests/obj/Debug
+/test/bin/Debug
+/test/obj/Debug
 /packages/Microsoft.Extensions.CommandLineUtils.1.1.1/lib
 /packages
