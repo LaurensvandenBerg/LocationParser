@@ -22,7 +22,7 @@ namespace LocationParser.Data.External
 						.ToTimeLine()
 						.timeEntries)
 			};
-			CleanupZipFiles(path);
+			//CleanupZipFiles(path);
 			return mergedTimeLine;
 		}
 

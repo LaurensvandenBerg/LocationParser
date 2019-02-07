@@ -16,6 +16,8 @@ namespace LocationParser.Models.Internal
 		STILL,
 		TILTING,
 		UNKNOWN,
-		WALKING
+		WALKING,
+		IN_TWO_WHEELER_VEHICLE,
+		IN_FOUR_WHEELER_VEHICLE
 	}
 }
